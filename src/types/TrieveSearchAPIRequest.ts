@@ -48,4 +48,4 @@ export interface TrieveOptionalSearchAPIRequest {
 }
 
 export type TrieveSearchAPIRequest = TrieveRequiredSearchAPIRequest &
-  TrieveOptionalSearchAPIRequest;
+  TrieveOptionalSearchAPIRequest & { dataset: string };

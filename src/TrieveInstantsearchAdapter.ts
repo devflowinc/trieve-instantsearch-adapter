@@ -63,7 +63,7 @@ export default class TrieveInstantsearchAdapter {
           {
             headers: {
               Authorization: `Bearer ${this._serverConfig.apiKey}`,
-              "TR-Dataset": this._serverConfig.dataset,
+              "TR-Dataset": adaptedRequest.dataset,
             },
           }
         );
@@ -83,6 +83,7 @@ export default class TrieveInstantsearchAdapter {
     return {
       query: query.params?.query || " ",
       search_type: this._searchType,
+      dataset: query.indexName,
     };
   };
 

@@ -32,7 +32,7 @@ export const WithAutoFocus: Story = {
 
 export const doNotDisplayLoadingIndicator: Story = {
   args: {
-    showLoadingIndicator: false,
+    loadingIconComponent: () => <></>,
   },
 };
 

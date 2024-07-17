@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Preview } from '@storybook/react';
-import Playgrond from '../src/components/Playground';
+import Playground from '../src/components/Playground';
 import TrieveInstantsearchProvider from '../src/components/TrieveInstantsearchProvider';
 
 import './css/index.css';
@@ -21,7 +21,7 @@ const preview: Preview = {
         <TrieveInstantsearchProvider>
           <h1 style={{ marginBottom: 8, color: 'gray' }}>Preview</h1>
           <Story />
-          <Playgrond />
+          <Playground />
         </TrieveInstantsearchProvider>
       );
     },

@@ -1,28 +1,29 @@
-export interface TrieveSearchAPIResponse {
-  chunks: ChunkElement[];
+import { GeoInfo } from "./TrieveSearchAPIRequest";
+
+export interface SearchResponseBody {
+  chunks: ScoreChunk[];
   total_pages: number;
 }
 
-export interface ChunkElement {
-  chunk: ChunkChunk;
+export interface ScoreChunk {
+  chunk: Chunk;
   highlights: string[];
   score: number;
 }
 
-export interface ChunkChunk {
+export interface Chunk {
   id: string;
-  link: string;
-  qdrant_point_id: string;
-  created_at: Date;
-  updated_at: Date;
-  chunk_html: string;
-  metadata: { [key: string]: string };
-  tracking_id: string;
-  time_stamp: null;
+  link: string | null;
+  created_at: string;
+  updated_at: string;
+  chunk_html: string | null;
+  metadata: object | null;
+  tracking_id: string | null;
+  time_stamp: string | null;
   dataset_id: string;
   weight: number;
-  location: null;
-  image_urls: null;
-  tag_set: string[];
-  num_value: null;
+  location: GeoInfo | null;
+  image_urls: string[] | null;
+  tag_set: string[] | null;
+  num_value: number | null;
 }

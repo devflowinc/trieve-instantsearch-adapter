@@ -5,7 +5,7 @@ import {
 
 import {
   TrieveSearchAPIRequest,
-  TrieveSearchType,
+  SearchMethod,
 } from "./types/TrieveSearchAPIRequest";
 
 import {
@@ -18,7 +18,7 @@ import {
 import axios from "axios";
 
 export default class TrieveInstantsearchAdapter {
-  private _searchType: TrieveSearchType;
+  private _searchType: SearchMethod;
   private _serverConfig: TrieveServerConfig;
   public searchClient: TrieveSearchClient;
 
@@ -63,7 +63,7 @@ export default class TrieveInstantsearchAdapter {
           {
             headers: {
               Authorization: `Bearer ${this._serverConfig.apiKey}`,
-              "TR-Dataset": adaptedRequest.dataset,
+              "TR-Dataset": adaptedRequest.datasetId,
               "X-API-Version": "2.0",
             },
           }
@@ -84,7 +84,7 @@ export default class TrieveInstantsearchAdapter {
     return {
       query: query.params?.query || " ",
       search_type: this._searchType,
-      dataset: query.indexName,
+      datasetId: query.indexName,
     };
   };
 

@@ -1,11 +1,11 @@
 import { SearchClient } from "algoliasearch-helper/types/algoliasearch";
 
-import { TrieveSearchType } from "./TrieveSearchAPIRequest";
+import { SearchMethod } from "./TrieveSearchAPIRequest";
 
-import { TrieveSearchAPIResponse } from "./TrieveSearchAPIResponse";
+import { SearchResponseBody } from "./TrieveSearchAPIResponse";
 
 export interface PerformTrieveSearchResponse {
-  apiResponse: TrieveSearchAPIResponse;
+  apiResponse: SearchResponseBody;
   processingTime: number;
   query: string;
 }
@@ -19,5 +19,5 @@ export type TrieveSearchClient = Pick<SearchClient, "search">;
 
 export interface TrieveInstantsearchAdapterConfig {
   server: TrieveServerConfig;
-  searchType: TrieveSearchType;
+  searchType: SearchMethod;
 }

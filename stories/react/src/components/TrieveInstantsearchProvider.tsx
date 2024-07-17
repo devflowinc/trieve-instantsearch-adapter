@@ -1,11 +1,9 @@
 import React, { useMemo } from 'react';
 import { InstantSearch } from 'react-instantsearch';
-import TrieveInstasearchAdapter from '../../../src/TrieveInstantsearchAdapter';
+import TrieveInstasearchAdapter from '../../../../src/TrieveInstantsearchAdapter';
 
 const API_KEY = import.meta.env.VITE_TRIEVE_API_KEY;
 const DATASET = import.meta.env.VITE_TRIEVE_DATASET;
-
-const INDEX_NAME = 'companies';
 
 interface IndexProps {
   /**
@@ -21,7 +19,6 @@ export default function TrieveInstantsearchProvider({
     const trieveInstasearchAdapter = new TrieveInstasearchAdapter({
       server: {
         apiKey: API_KEY,
-        dataset: DATASET,
         url: 'https://api.trieve.ai',
       },
       searchType: 'fulltext',
@@ -31,7 +28,7 @@ export default function TrieveInstantsearchProvider({
   }, []);
 
   return (
-    <InstantSearch searchClient={searchClient} indexName={INDEX_NAME}>
+    <InstantSearch searchClient={searchClient} indexName={DATASET}>
       {children}
     </InstantSearch>
   );

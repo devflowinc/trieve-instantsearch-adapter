@@ -13,7 +13,6 @@ export interface PerformTrieveSearchResponse {
 export interface TrieveServerConfig {
   url: string;
   apiKey: string;
-  dataset: string;
 }
 
 export type TrieveSearchClient = Pick<SearchClient, "search">;

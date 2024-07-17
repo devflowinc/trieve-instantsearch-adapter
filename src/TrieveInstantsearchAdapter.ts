@@ -64,6 +64,7 @@ export default class TrieveInstantsearchAdapter {
             headers: {
               Authorization: `Bearer ${this._serverConfig.apiKey}`,
               "TR-Dataset": adaptedRequest.dataset,
+              "X-API-Version": "2.0",
             },
           }
         );
@@ -89,16 +90,16 @@ export default class TrieveInstantsearchAdapter {
 
   private _adaptSearchResponse = (response: PerformTrieveSearchResponse) => {
     return {
-      hits: response.apiResponse.score_chunks.map((scoreChunk) => ({
-        objectID: scoreChunk.metadata[0].tracking_id,
-        highlights: scoreChunk.highlights,
-        ...scoreChunk.metadata[0],
+      hits: response.apiResponse.chunks.map((chunk) => ({
+        objectID: chunk.chunk.tracking_id,
+        highlights: chunk.highlights,
+        ...chunk.chunk,
       })),
       processingTimeMS: response.processingTime,
       exhaustiveNbHits: true,
       hitsPerPage: 10,
-      nbHits: response.apiResponse.score_chunks.length,
-      nbPages: response.apiResponse.total_chunk_pages,
+      nbHits: response.apiResponse.chunks.length,
+      nbPages: response.apiResponse.total_pages,
       page: 0,
       params: "",
       query: response.query,

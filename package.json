@@ -1,6 +1,7 @@
 {
   "name": "trieve-instantsearch-adapter",
   "version": "1.0.0",
+  "packageManager": "yarn@1.22.22",
   "scripts": {
     "build": "tsc"
   },
@@ -18,8 +19,8 @@
     "typescript": "^5.5.3"
   },
   "devDependencies": {
-    "ts-node": "^10.9.2",
-    "algoliasearch-helper": "^3.22.2",
-    "@types/node": "^20.14.10"
+    "@algolia/client-search": "^4.24.0",
+    "@types/node": "^20.14.10",
+    "ts-node": "^10.9.2"
   }
 }

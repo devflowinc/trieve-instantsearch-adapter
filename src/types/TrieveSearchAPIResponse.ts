@@ -1,6 +1,6 @@
 import { GeoInfo } from "./TrieveSearchAPIRequest";
 
-export interface SearchResponseBody {
+export interface TrieveSearchAPIResponse {
   chunks: ScoreChunk[];
   total_pages: number;
 }

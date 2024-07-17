@@ -1,11 +1,14 @@
-import { SearchClient } from "algoliasearch-helper/types/algoliasearch";
-
 import { SearchMethod } from "./TrieveSearchAPIRequest";
 
-import { SearchResponseBody } from "./TrieveSearchAPIResponse";
+import {
+  MultipleQueriesResponse,
+  MultipleQueriesQuery,
+} from "@algolia/client-search";
+
+import { TrieveSearchAPIResponse } from "./TrieveSearchAPIResponse";
 
 export interface PerformTrieveSearchResponse {
-  apiResponse: SearchResponseBody;
+  apiResponse: TrieveSearchAPIResponse;
   processingTime: number;
   query: string;
 }
@@ -15,7 +18,11 @@ export interface TrieveServerConfig {
   apiKey: string;
 }
 
-export type TrieveSearchClient = Pick<SearchClient, "search">;
+export interface TrieveSearchClient {
+  search: (
+    instantsearchRequests: MultipleQueriesQuery[]
+  ) => Promise<MultipleQueriesResponse<any>>;
+}
 
 export interface TrieveInstantsearchAdapterConfig {
   server: TrieveServerConfig;
